@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/app_graph"
+    app:startDestination="@id/movieFeedFragment">
+
+    <fragment
+        android:id="@+id/movieFeedFragment"
+        android:name="com.pexsistols.moviereviewapp.view.MovieFeedFragment"
+        android:label="MovieFeedFragment" >
+        <action
+            android:id="@+id/action_movieFeedFragment_to_movieReviewFragment"
+            app:destination="@id/movieReviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieReviewFragment"
+        android:name="com.pexsistols.moviereviewapp.view.MovieReviewFragment"
+        android:label="MovieReviewFragment" >
+        <action
+            android:id="@+id/action_movieReviewFragment_to_movieFeedFragment"
+            app:destination="@id/movieFeedFragment" />
+    </fragment>
+</navigation>
