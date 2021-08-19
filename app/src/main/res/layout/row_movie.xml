@@ -1,56 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/app_dark_gray"
+    android:background="@drawable/background"
     android:layout_margin="8dp">
 
-    <ImageView
-        android:id="@+id/row_poster"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="24dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:srcCompat="@tools:sample/avatars"
-        android:background="@drawable/border"/>
+        android:layout_weight="2">
 
-    <TextView
-        android:id="@+id/row_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="40dp"
-        android:text="TextView"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/row_poster"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/row_poster"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            android:src="@drawable/ic_launcher_background"
+            android:background="@drawable/border"/>
 
-    <TextView
-        android:id="@+id/row_year"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/row_name"
-        app:layout_constraintTop_toBottomOf="@+id/row_name"
-        android:textColor="@color/white"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <TextView
-        android:id="@+id/row_length"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/row_year"
-        app:layout_constraintTop_toBottomOf="@+id/row_year"
-        android:textColor="@color/white"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/row_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/border"
+                android:padding="4dp"
+                android:text="TextView"
+                android:textColor="@color/app_black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/row_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/border"
+                android:padding="4dp"
+                android:text="TextView"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/row_name"
+                app:layout_constraintTop_toBottomOf="@+id/row_name" />
+
+            <TextView
+                android:id="@+id/row_length"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/border"
+                android:padding="4dp"
+                android:text="TextView"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/row_year"
+                app:layout_constraintTop_toBottomOf="@+id/row_year" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
