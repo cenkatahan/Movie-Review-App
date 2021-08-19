@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:786072355159:android:72434daf573cbe7f3dfe12",
         "android_client_info": {
-          "package_name": "com.pexsistols.moviereviewapp.view"
+          "package_name": "com.pexsistols.moviereviewapp"
         }
       },
       "oauth_client": [
