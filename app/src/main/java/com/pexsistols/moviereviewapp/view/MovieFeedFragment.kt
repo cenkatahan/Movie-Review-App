@@ -1,18 +1,25 @@
 package com.pexsistols.moviereviewapp.view
 
 import android.os.Bundle
+import android.text.Layout
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pexsistols.moviereviewapp.R
+import com.pexsistols.moviereviewapp.adapter.RecyclerAdapter
+import com.pexsistols.moviereviewapp.model.Movie
 
 class MovieFeedFragment : Fragment() {
 
     //VIEW BINDING SHOULD BE IMPLEMENTED
 
     private lateinit var recyclerView: RecyclerView
+    private lateinit var movieAdapter : RecyclerAdapter
+    private lateinit var movieList : ArrayList<Movie>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +36,18 @@ class MovieFeedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val movie = Movie("movie","2021", "2 saat", "", "good")
+        movieList = ArrayList<Movie>()
+        movieList.add(movie)
+
         recyclerView = view.findViewById(R.id.recyclerview_feed)
+        recyclerView.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        movieAdapter = RecyclerAdapter(movieList)
+        recyclerView.adapter = movieAdapter
+        recyclerView.setHasFixedSize(true)
+    }
+
+    private fun createRecyclerview(view: View){
+
     }
 }
