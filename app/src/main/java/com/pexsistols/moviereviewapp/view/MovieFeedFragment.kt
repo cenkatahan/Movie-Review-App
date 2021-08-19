@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.pexsistols.moviereviewapp.R
 import com.pexsistols.moviereviewapp.adapter.RecyclerAdapter
 import com.pexsistols.moviereviewapp.model.Movie

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "786072355159",
+    "project_id": "movie-review-db-86153",
+    "storage_bucket": "movie-review-db-86153.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786072355159:android:72434daf573cbe7f3dfe12",
+        "android_client_info": {
+          "package_name": "com.pexsistols.moviereviewapp.view"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "786072355159-v2q50s55r41a6hm1hloa2d24nnii0qrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpTsztWpNArKuonjeZGtQqTyC4LZLVA10"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "786072355159-v2q50s55r41a6hm1hloa2d24nnii0qrf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
