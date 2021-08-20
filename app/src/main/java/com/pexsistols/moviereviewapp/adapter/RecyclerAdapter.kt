@@ -12,7 +12,7 @@ import com.pexsistols.moviereviewapp.model.Movie
 import com.pexsistols.moviereviewapp.view.MovieFeedFragmentDirections
 import java.util.ArrayList
 
-class RecyclerAdapter(val movieList : ArrayList<Movie>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerAdapter(private val movieList : ArrayList<Movie>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
 
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
@@ -50,7 +50,6 @@ class RecyclerAdapter(val movieList : ArrayList<Movie>) : RecyclerView.Adapter<R
             val action = MovieFeedFragmentDirections.actionMovieFeedFragmentToMovieReviewFragment()
             Navigation.findNavController(it).navigate(action)
         }
-
 
     }
 
