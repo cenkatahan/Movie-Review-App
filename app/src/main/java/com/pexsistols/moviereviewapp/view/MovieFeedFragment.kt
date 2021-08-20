@@ -38,7 +38,7 @@ class MovieFeedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val movie = Movie("movie","2021", "2 saat", "", "good")
+        val movie = Movie("Blade Runner 2049","2017", "2 saat", "", "good")
         movieList = ArrayList<Movie>()
         movieList.add(movie)
 
