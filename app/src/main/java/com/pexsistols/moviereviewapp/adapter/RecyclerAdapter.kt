@@ -56,4 +56,10 @@ class RecyclerAdapter(private val movieList : ArrayList<Movie>) : RecyclerView.A
     override fun getItemCount(): Int {
         return movieList.size
     }
+
+    fun updateMovieList(list : ArrayList<Movie>){
+        movieList.clear()
+        movieList.addAll(list)
+        notifyDataSetChanged()
+    }
 }
