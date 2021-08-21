@@ -46,7 +46,7 @@ class MovieFeedFragment : Fragment() {
         movieFeedViewModel = ViewModelProviders.of(this).get(MovieFeedViewModel::class.java)
         movieFeedViewModel.refreshData()
 
-        movieList = ArrayList<Movie>()
+        movieList = ArrayList()
 
         recyclerView = view.findViewById(R.id.recyclerview_feed)
         recyclerView.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
@@ -57,11 +57,11 @@ class MovieFeedFragment : Fragment() {
         observeLiveData()
     }
 
-    fun observeLiveData(){
+    private fun observeLiveData(){
         movieFeedViewModel.movies.observe(viewLifecycleOwner, Observer { movies ->
             movies?.let {
                 recyclerView.visibility = View.VISIBLE
-                movieAdapter.updateMovieList(movies as java.util.ArrayList<Movie>)
+                movieAdapter.updateMovieList(movies)
             }
         })
     }
