@@ -5,7 +5,12 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.*
 import com.google.firebase.ktx.Firebase
 import com.pexsistols.moviereviewapp.model.Movie
@@ -15,8 +20,8 @@ import kotlin.collections.ArrayList
 class MovieFeedViewModel : ViewModel() {
 
     private val TAG : String = "MOVIEWFEEDVIEWMODEL"
-    private var db = Firebase.firestore
-    val movies = MutableLiveData<ArrayList<Movie>>()
+//    private var db : FirebaseFirestore = Firebase.firestore
+    private val movies = MutableLiveData<ArrayList<Movie>>()
 
 
     //change method name
@@ -32,24 +37,12 @@ class MovieFeedViewModel : ViewModel() {
 
         movies.value = movieListTest
 
+
+
     }
 
-    fun readData(){
-        db.collection("reviews").addSnapshotListener { value, error ->
-            if( error != null){
-                Log.w(TAG, error.localizedMessage, error)
-                return@addSnapshotListener
-            }
-            if(value != null){
-                val documents = value.documents
-                val movies = ArrayList<Movie>()
-                documents.forEach {
-                    it.toString()
-                    
-                }
-            }
-        }
+    fun getMovies() : MutableLiveData<ArrayList<Movie>> {
+        return movies
     }
-
 
 }
