@@ -5,14 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.pexsistols.moviereviewapp.R
 import com.pexsistols.moviereviewapp.adapter.RecyclerAdapter
 import com.pexsistols.moviereviewapp.model.Movie
@@ -65,7 +61,7 @@ class MovieFeedFragment : Fragment() {
 
     private fun observeMovies(){
 
-        movieFeedViewModel.getMovies().observe(viewLifecycleOwner, Observer { movies ->
+        movieFeedViewModel.getMovies().observe(viewLifecycleOwner, { movies ->
             movies?.let {
                 recyclerView.visibility = View.VISIBLE
                 movieAdapter.updateMovieList(movies)
