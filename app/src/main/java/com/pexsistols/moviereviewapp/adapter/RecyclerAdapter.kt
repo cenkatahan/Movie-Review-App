@@ -16,18 +16,10 @@ class RecyclerAdapter(private val movieList : ArrayList<Movie>) : RecyclerView.A
 
 
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-        val posterHolder : ImageView
-        val nameHolder : TextView
-        val yearHolder : TextView
-        val lengthHolder : TextView
-
-        init {
-            posterHolder = view.findViewById(R.id.row_poster)
-            nameHolder = view.findViewById(R.id.row_name)
-            yearHolder = view.findViewById(R.id.row_year)
-            lengthHolder = view.findViewById(R.id.row_length)
-
-        }
+        val posterHolder : ImageView = view.findViewById(R.id.row_poster)
+        val nameHolder : TextView = view.findViewById(R.id.row_name)
+        val yearHolder : TextView = view.findViewById(R.id.row_year)
+        val lengthHolder : TextView = view.findViewById(R.id.row_length)
 
     }
 
