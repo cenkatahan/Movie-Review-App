@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.pexsistols.moviereviewapp.R
 import com.pexsistols.moviereviewapp.adapter.RecyclerAdapter
 import com.pexsistols.moviereviewapp.model.Movie
@@ -38,19 +40,18 @@ class MovieFeedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        db = FirebaseFirestore.getInstance()
+        db = Firebase.firestore
         movieList = ArrayList()
 
         movieFeedViewModel = ViewModelProviders.of(this).get(MovieFeedViewModel::class.java)
-        movieFeedViewModel.refreshData()
+        movieFeedViewModel.fetchMoviesFromFB()
 
         recyclerView = view.findViewById(R.id.recyclerview_feed)
         initRecyclerview()
 
         observeMovies()
-
-        //fetchMovies()
     }
+
 
     private fun initRecyclerview(){
         recyclerView.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
@@ -68,20 +69,4 @@ class MovieFeedFragment : Fragment() {
             }
         })
     }
-
-    private fun fetchMovies(){
-        db.collection("reviews")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    println("${document["name"]}")
-                }
-            }
-            .addOnFailureListener {
-                //Log.w(TAG, "Error getting documents.", exception)
-            }
-    }
-
-
-
 }

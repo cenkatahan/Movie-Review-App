@@ -39,7 +39,7 @@ class RecyclerAdapter(private val movieList : ArrayList<Movie>) : RecyclerView.A
         //holder.posterHolder = movieList[position].posterUrl
 
         holder.itemView.setOnClickListener {
-            val action = MovieFeedFragmentDirections.actionMovieFeedFragmentToMovieReviewFragment()
+            val action = MovieFeedFragmentDirections.actionMovieFeedFragmentToMovieReviewFragment(position)
             Navigation.findNavController(it).navigate(action)
         }
 

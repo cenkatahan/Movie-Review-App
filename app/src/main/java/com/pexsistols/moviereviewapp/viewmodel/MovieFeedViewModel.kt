@@ -14,17 +14,15 @@ class MovieFeedViewModel : ViewModel() {
     private val movies = MutableLiveData<ArrayList<Movie>>()
     private lateinit var movieList : ArrayList<Movie>
 
-
-    //change method name
-    fun refreshData(){
+    fun fetchMoviesFromFB(){
 //        val bladeRunner = Movie("Blade Runner","Ridley Scott", arrayListOf("Sci-fi"), "1982", "1saat 57dk", "", "VERY GOOD")
 //        val bladeRunner2049 = Movie("Blade Runner 2049",
 //            "Denis Villeneuve", arrayListOf("Sci-fi"), "2017", "2 saat 44 dk", "", "VERY GOOD!!!")
 
         movieList = ArrayList()
 
+        //DO wrap with a method
         db.collection("reviews").addSnapshotListener { value, error ->
-
             if (error != null){
                 println(error.localizedMessage)
             }else{
@@ -35,13 +33,7 @@ class MovieFeedViewModel : ViewModel() {
                         for (document in documents){
                             val title = document.get("name") as String
 
-                            val movie = Movie(title,
-                                "",
-                                arrayListOf(),
-                                "",
-                                "",
-                                "",
-                                "")
+                            val movie = Movie(title,"",arrayListOf(),"","","","")
                             movieList.add(movie)
                         }
                         movies.value = movieList
