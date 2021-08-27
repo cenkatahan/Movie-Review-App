@@ -19,5 +19,8 @@
         <action
             android:id="@+id/action_movieReviewFragment_to_movieFeedFragment"
             app:destination="@id/movieFeedFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 </navigation>
