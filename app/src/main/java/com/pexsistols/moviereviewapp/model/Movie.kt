@@ -1,7 +1,7 @@
 package com.pexsistols.moviereviewapp.model
 
 data class Movie(
-    val name : String?,
+    val title : String?,
     val director : String?,
     val genre : ArrayList<String?>,
     val year: String?,

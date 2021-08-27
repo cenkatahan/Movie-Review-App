@@ -23,7 +23,7 @@ class MovieFeedFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var movieAdapter : RecyclerAdapter
     private lateinit var movieList : ArrayList<Movie>
-    private var db = Firebase.firestore
+    private lateinit var db : FirebaseFirestore
     private lateinit var movieFeedViewModel : MovieFeedViewModel
 
 
@@ -42,6 +42,7 @@ class MovieFeedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        db = FirebaseFirestore.getInstance()
         movieList = ArrayList()
 
         movieFeedViewModel = ViewModelProviders.of(this).get(MovieFeedViewModel::class.java)
@@ -77,7 +78,7 @@ class MovieFeedFragment : Fragment() {
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    //println("${document["name"]}")
+                    println("${document["name"]}")
                 }
             }
             .addOnFailureListener {
