@@ -41,7 +41,7 @@ class RecyclerAdapter(private val movieList : ArrayList<Movie>) : RecyclerView.A
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentMovie = movieList[position]
 
-        holder.nameHolder.text = currentMovie.name
+        holder.nameHolder.text = currentMovie.title
         holder.yearHolder.text = currentMovie.year
         holder.lengthHolder.text = currentMovie.length
         //holder.posterHolder = movieList[position].posterUrl
