@@ -13,8 +13,25 @@ class MovieReviewViewModel : ViewModel() {
     private val movie = MutableLiveData<Movie>()
     private lateinit var selectedMovie: Movie
 
-    fun fetchMovieFromFB(){
+    fun fetchMovieFromFB(id : Int){
 
+        println("ID: $id")
+//        db.collection("reviews").whereEqualTo("id", id).addSnapshotListener { value, error ->
+//            if (error != null){
+//                println(error.localizedMessage)
+//            }else{
+//                if(value != null){
+//                    val documentValues = value.documents
+//
+//                    for (data in documentValues){
+//                        println(data.get("name"))
+//                        val title = data.get("name") as String
+//                        selectedMovie = Movie(title,"",arrayListOf(),"","","","")
+//                        movie.value = selectedMovie
+//                    }
+//                }
+//            }
+//        }
     }
 
 
