@@ -21,9 +21,7 @@ class MovieFeedFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var movieAdapter : RecyclerAdapter
     private lateinit var movieList : ArrayList<Movie>
-    private lateinit var db : FirebaseFirestore
     private lateinit var movieFeedViewModel : MovieFeedViewModel
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +38,6 @@ class MovieFeedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        db = Firebase.firestore
         movieList = ArrayList()
 
         movieFeedViewModel = ViewModelProviders.of(this).get(MovieFeedViewModel::class.java)
