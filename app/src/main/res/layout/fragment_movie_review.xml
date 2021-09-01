@@ -8,7 +8,7 @@
     tools:context=".view.MovieReviewFragment"
     android:background="@color/app_black"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="8dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -19,27 +19,37 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2">
+            android:layout_weight="4">
 
             <TextView
-                android:id="@+id/review_name"
+                android:id="@+id/review_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="MOVIE NAME"
                 android:textColor="@color/white"
-                android:textSize="32sp"
+                android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/review_original_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="@+id/review_title"
+                app:layout_constraintTop_toBottomOf="@+id/review_title" />
 
             <TextView
                 android:id="@+id/review_director"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="THE DIRECTOR"
                 android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="@+id/review_name"
-                app:layout_constraintTop_toBottomOf="@+id/review_name" />
+                android:textSize="12dp"
+                app:layout_constraintStart_toStartOf="@+id/review_original_title"
+                app:layout_constraintTop_toBottomOf="@+id/review_original_title" />
 
             <TextView
                 android:id="@+id/review_year"
@@ -47,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:text="YEAR"
                 android:textColor="@color/white"
+                android:textSize="12dp"
                 app:layout_constraintBottom_toTopOf="@+id/review_length"
                 app:layout_constraintStart_toStartOf="@+id/review_director" />
 
@@ -57,15 +68,29 @@
                 android:layout_marginBottom="8dp"
                 android:text="LENGTH"
                 android:textColor="@color/white"
+                android:textSize="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/review_genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                android:text="GENRE(s)"
+                android:textAlignment="textEnd"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="10"
             android:orientation="vertical">
 
 
@@ -81,27 +106,22 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:background="@drawable/border_poster"
-                    android:src="@drawable/poster"/>
+                    android:src="@drawable/posterr"
+                    android:layout_marginBottom="4dp"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linearLayoutCompat"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="end"
-                android:layout_weight="5"
-                android:padding="4dp">
+<!--            <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                android:id="@+id/linearLayoutCompat"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:gravity="end"-->
+<!--                android:layout_weight="5"-->
+<!--                android:padding="4dp">-->
 
-                <TextView
-                    android:id="@+id/review_genre"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="GENRE(s)"
-                    android:textColor="@color/white"
-                    android:textAlignment="textEnd"/>
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+
+<!--            </androidx.appcompat.widget.LinearLayoutCompat>-->
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>

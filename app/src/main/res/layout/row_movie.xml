@@ -11,22 +11,23 @@
     android:layout_marginLeft="8dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="2">
 
         <ImageView
             android:id="@+id/row_poster"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="12dp"
             android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
-            android:src="@drawable/poster"
+            android:src="@drawable/posterr"
             android:background="@drawable/border_poster"
             android:adjustViewBounds="true"/>
 
@@ -44,42 +45,49 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/row_name"
+                android:id="@+id/row_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/border"
-                android:padding="4dp"
                 android:text="TextView"
-                android:textColor="@color/app_black"
-                android:textSize="24sp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/row_original_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="TextView"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/row_title"
+                app:layout_constraintTop_toBottomOf="@+id/row_title" />
 
             <TextView
                 android:id="@+id/row_year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/border"
-                android:padding="4dp"
+                android:layout_marginTop="16dp"
                 android:text="TextView"
-                android:textColor="@color/app_black"
-                app:layout_constraintStart_toStartOf="@+id/row_name"
-                app:layout_constraintTop_toBottomOf="@+id/row_name" />
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/row_original_title"
+                app:layout_constraintTop_toBottomOf="@+id/row_original_title" />
 
             <TextView
                 android:id="@+id/row_length"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/border"
-                android:padding="4dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:text="TextView"
-                android:textColor="@color/app_black"
-                app:layout_constraintStart_toStartOf="@+id/row_year"
-                app:layout_constraintTop_toBottomOf="@+id/row_year" />
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@+id/row_year"
+                app:layout_constraintTop_toBottomOf="@+id/row_original_title" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

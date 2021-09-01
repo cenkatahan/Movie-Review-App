@@ -28,8 +28,16 @@ class MovieFeedViewModel : ViewModel() {
 
                         for (document in documents){
                             val title = document.get("name") as String
+                            val ogTitle = document.get("originalTitle") as String
+                            val director = document.get("director") as String
+                            val genres = document.get("genre") as String
+                            val year = document.get("year") as String
+                            val length = document.get("length") as String
+                            //val posterUrl = document.get("posterUrl") as String
+                            val review = document.get("review") as String
 
-                            val movie = Movie(title,"",arrayListOf(),"","","","")
+                            val movie = Movie(title, ogTitle, director, genres, year, length, "", review)
+
                             movieList.add(movie)
                         }
                         movies.value = movieList
