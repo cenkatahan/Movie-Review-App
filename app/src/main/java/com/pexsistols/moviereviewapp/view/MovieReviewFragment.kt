@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 import com.pexsistols.moviereviewapp.R
+import com.pexsistols.moviereviewapp.service.GlideService
 import com.pexsistols.moviereviewapp.viewmodel.MovieReviewViewModel
 
 class MovieReviewFragment : Fragment() {
@@ -22,7 +23,10 @@ class MovieReviewFragment : Fragment() {
     private lateinit var genres : TextView
     private lateinit var review : TextView
     private lateinit var movieReviewViewModel: MovieReviewViewModel
+    private lateinit var glideService : GlideService
     private var movieId : Int = 0
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +38,6 @@ class MovieReviewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         declareComponents(view)
 
         arguments?.let {
@@ -44,7 +47,7 @@ class MovieReviewFragment : Fragment() {
         movieReviewViewModel = ViewModelProviders.of(this).get(MovieReviewViewModel::class.java)
         movieReviewViewModel.fetchMovieFromFB(movieId)
 
-        observeMovie()
+        observeMovie(view)
     }
 
     private fun declareComponents(view: View){
@@ -56,9 +59,10 @@ class MovieReviewFragment : Fragment() {
         poster = view.findViewById(R.id.review_poster)
         genres = view.findViewById(R.id.review_genre)
         review = view.findViewById(R.id.review_review)
+        glideService = GlideService()
     }
 
-    private fun observeMovie(){
+    private fun observeMovie(view: View){
         movieReviewViewModel.getMovie().observe(viewLifecycleOwner, {
             title.text = it.title
             ogTitle.text = it.originalTitle
@@ -66,9 +70,9 @@ class MovieReviewFragment : Fragment() {
             year.text = it.year
             length.text = it.length
             genres.text = it.genre
-            //poster.text = it.title
             review.text = it.review
 
+            glideService.downloadPoster(view, it.posterUrl, poster)
         })
     }
 

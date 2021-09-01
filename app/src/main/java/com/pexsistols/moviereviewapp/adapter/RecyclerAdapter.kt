@@ -9,11 +9,13 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.pexsistols.moviereviewapp.R
 import com.pexsistols.moviereviewapp.model.Movie
+import com.pexsistols.moviereviewapp.service.GlideService
 import com.pexsistols.moviereviewapp.view.MovieFeedFragmentDirections
 import java.util.ArrayList
 
 class RecyclerAdapter(private val movieList : ArrayList<Movie>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
+    private lateinit var glideService : GlideService
 
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         val posterHolder : ImageView = view.findViewById(R.id.row_poster)
@@ -26,6 +28,8 @@ class RecyclerAdapter(private val movieList : ArrayList<Movie>) : RecyclerView.A
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        glideService = GlideService()
+
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.row_movie, parent, false)
 
@@ -39,7 +43,8 @@ class RecyclerAdapter(private val movieList : ArrayList<Movie>) : RecyclerView.A
         holder.originalTitleHolder.text = currentMovie.originalTitle
         holder.yearHolder.text = currentMovie.year
         holder.lengthHolder.text = currentMovie.length
-        //holder.posterHolder = movieList[position].posterUrl
+
+        glideService.downloadPoster(holder.itemView, currentMovie.posterUrl, holder.posterHolder)
 
         holder.itemView.setOnClickListener {
             val action = MovieFeedFragmentDirections.actionMovieFeedFragmentToMovieReviewFragment(position)
