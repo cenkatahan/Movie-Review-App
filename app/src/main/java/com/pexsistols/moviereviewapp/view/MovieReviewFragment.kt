@@ -9,16 +9,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.pexsistols.moviereviewapp.R
-import com.pexsistols.moviereviewapp.viewmodel.MovieFeedViewModel
 import com.pexsistols.moviereviewapp.viewmodel.MovieReviewViewModel
 
 class MovieReviewFragment : Fragment() {
 
     private lateinit var title : TextView
+    private lateinit var ogTitle : TextView
     private lateinit var director : TextView
     private lateinit var year : TextView
     private lateinit var length : TextView
@@ -56,7 +53,8 @@ class MovieReviewFragment : Fragment() {
     }
 
     private fun declareComponents(view: View){
-        title = view.findViewById(R.id.review_name)
+        title = view.findViewById(R.id.review_title)
+        ogTitle = view.findViewById(R.id.review_original_title)
         director = view.findViewById(R.id.review_director)
         year = view.findViewById(R.id.review_year)
         length = view.findViewById(R.id.review_length)
@@ -68,6 +66,14 @@ class MovieReviewFragment : Fragment() {
     private fun observeMovie(){
         movieReviewViewModel.getMovie().observe(viewLifecycleOwner, Observer {
             title.text = it.title
+            ogTitle.text = it.originalTitle
+            director.text = it.director
+            year.text = it.year
+            length.text = it.length
+            genres.text = it.genre
+            //poster.text = it.title
+            review.text = it.review
+
         })
     }
 
