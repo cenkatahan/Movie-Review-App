@@ -6,7 +6,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.pexsistols.moviereviewapp.model.Movie
 
-class FirebaseData {
+class FirebaseService {
 
     private var db : FirebaseFirestore = Firebase.firestore
 
@@ -28,10 +28,10 @@ class FirebaseData {
                             val genres = document.get("genre") as String
                             val year = document.get("year") as String
                             val length = document.get("length") as String
-                            //val posterUrl = document.get("posterUrl") as String
+                            val posterUrl = document.get("posterUrl") as String
                             val review = document.get("review") as String
 
-                            val movie = Movie(title, ogTitle, director, genres, year, length, "", review)
+                            val movie = Movie(title, ogTitle, director, genres, year, length, posterUrl, review)
 
                             movieList.add(movie)
                         }
@@ -43,7 +43,6 @@ class FirebaseData {
     }
 
     fun getDataFromFb(id : Int, movie : MutableLiveData<Movie>){
-
         db.collection("reviews").whereEqualTo("id", id.toString()).addSnapshotListener { value, error ->
             if (error != null){
                 println(error.localizedMessage)
@@ -58,10 +57,10 @@ class FirebaseData {
                         val genres = data.get("genre") as String
                         val year = data.get("year") as String
                         val length = data.get("length") as String
-                        //val posterUrl = data.get("posterUrl") as String
+                        val posterUrl = data.get("posterUrl") as String
                         val review = data.get("review") as String
 
-                        val x = Movie(title, ogTitle, director, genres, year, length, "", review)
+                        val x = Movie(title, ogTitle, director, genres, year, length, posterUrl, review)
 
                         movie.value = x
                     }
