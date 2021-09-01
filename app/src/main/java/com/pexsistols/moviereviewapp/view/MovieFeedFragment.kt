@@ -8,9 +8,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.pexsistols.moviereviewapp.R
 import com.pexsistols.moviereviewapp.adapter.RecyclerAdapter
 import com.pexsistols.moviereviewapp.model.Movie
@@ -41,7 +38,7 @@ class MovieFeedFragment : Fragment() {
         movieList = ArrayList()
 
         movieFeedViewModel = ViewModelProviders.of(this).get(MovieFeedViewModel::class.java)
-        movieFeedViewModel.fetchMoviesFromFB()
+        movieFeedViewModel.fetchMovies()
 
         recyclerView = view.findViewById(R.id.recyclerview_feed)
         initRecyclerview()

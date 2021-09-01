@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.pexsistols.moviereviewapp.R
 import com.pexsistols.moviereviewapp.viewmodel.MovieReviewViewModel
@@ -24,10 +23,6 @@ class MovieReviewFragment : Fragment() {
     private lateinit var review : TextView
     private lateinit var movieReviewViewModel: MovieReviewViewModel
     private var movieId : Int = 0
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,7 +59,7 @@ class MovieReviewFragment : Fragment() {
     }
 
     private fun observeMovie(){
-        movieReviewViewModel.getMovie().observe(viewLifecycleOwner, Observer {
+        movieReviewViewModel.getMovie().observe(viewLifecycleOwner, {
             title.text = it.title
             ogTitle.text = it.originalTitle
             director.text = it.director
