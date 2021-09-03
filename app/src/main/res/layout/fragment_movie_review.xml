@@ -8,7 +8,7 @@
     tools:context=".view.MovieReviewFragment"
     android:background="@color/app_black"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:padding="16dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -28,6 +28,7 @@
                 android:text="MOVIE NAME"
                 android:textColor="@color/white"
                 android:textSize="24sp"
+                android:maxLines="2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,6 +39,7 @@
                 android:text="TextView"
                 android:textColor="@color/white"
                 android:textSize="16dp"
+                android:maxLines="2"
                 app:layout_constraintStart_toStartOf="@+id/review_title"
                 app:layout_constraintTop_toBottomOf="@+id/review_title" />
 
@@ -76,7 +78,7 @@
                 android:id="@+id/review_genre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="GENRE(s)"
                 android:textAlignment="textEnd"
@@ -102,26 +104,14 @@
 
                 <ImageView
                     android:id="@+id/review_poster"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
                     android:background="@drawable/border_poster_review"
-                    android:src="@drawable/posterr"
                     android:layout_marginBottom="4dp"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
-
-<!--            <androidx.appcompat.widget.LinearLayoutCompat-->
-<!--                android:id="@+id/linearLayoutCompat"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:gravity="end"-->
-<!--                android:layout_weight="5"-->
-<!--                android:padding="4dp">-->
-
-
-
-<!--            </androidx.appcompat.widget.LinearLayoutCompat>-->
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
