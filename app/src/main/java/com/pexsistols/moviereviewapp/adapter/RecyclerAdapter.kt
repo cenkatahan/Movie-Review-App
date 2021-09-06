@@ -47,8 +47,12 @@ class RecyclerAdapter(private val movieList : ArrayList<Movie>) : RecyclerView.A
         glideService.downloadPoster(holder.itemView, currentMovie.posterUrl, holder.posterHolder)
 
         holder.itemView.setOnClickListener {
-            val action = MovieFeedFragmentDirections.actionMovieFeedFragmentToMovieReviewFragment(position)
-            Navigation.findNavController(it).navigate(action)
+            val action = currentMovie.id?.let { it1 ->
+                MovieFeedFragmentDirections.actionMovieFeedFragmentToMovieReviewFragment(
+                    it1
+                )
+            }
+            Navigation.findNavController(it).navigate(action!!)
         }
 
     }
@@ -62,4 +66,6 @@ class RecyclerAdapter(private val movieList : ArrayList<Movie>) : RecyclerView.A
         movieList.addAll(list)
         notifyDataSetChanged()
     }
+
+
 }

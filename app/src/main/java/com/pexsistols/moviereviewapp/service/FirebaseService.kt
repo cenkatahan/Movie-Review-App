@@ -22,6 +22,7 @@ class FirebaseService {
                         val documents = value.documents
 
                         for (document in documents){
+                            val id = document.get("id") as String
                             val title = document.get("name") as String
                             val ogTitle = document.get("originalTitle") as String
                             val director = document.get("director") as String
@@ -31,7 +32,7 @@ class FirebaseService {
                             val posterUrl = document.get("posterUrl") as String
                             val review = document.get("review") as String
 
-                            val movie = Movie(title, ogTitle, director, genres, year, length, posterUrl, review)
+                            val movie = Movie(id.toInt(), title, ogTitle, director, genres, year, length, posterUrl, review)
 
                             movieList.add(movie)
                         }
@@ -51,6 +52,7 @@ class FirebaseService {
                     val documentValues = value.documents
 
                     for (data in documentValues){
+                        val id = data.get("id") as String
                         val title = data.get("name") as String
                         val ogTitle = data.get("originalTitle") as String
                         val director = data.get("director") as String
@@ -60,7 +62,7 @@ class FirebaseService {
                         val posterUrl = data.get("posterUrl") as String
                         val review = data.get("review") as String
 
-                        val x = Movie(title, ogTitle, director, genres, year, length, posterUrl, review)
+                        val x = Movie(id.toInt(), title, ogTitle, director, genres, year, length, posterUrl, review)
 
                         movie.value = x
                     }
