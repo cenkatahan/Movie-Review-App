@@ -9,7 +9,6 @@
     android:background="@color/app_black"
     tools:context=".view.MovieFeedFragment">
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_feed"
             android:layout_width="0dp"
