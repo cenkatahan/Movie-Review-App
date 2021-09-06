@@ -12,4 +12,7 @@
     <color name="app_dark_gray">#5e6668</color>
     <color name="app_light_gray">#c1c8c7</color>
     <color name="app_brown">#d49c6b</color>
+    <color name="app_white">#f6fafb</color>
+    <color name="app_white_transparent">#9EF6FAFB</color>
+
 </resources>

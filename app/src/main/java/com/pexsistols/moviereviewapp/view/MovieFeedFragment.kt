@@ -1,10 +1,13 @@
 package com.pexsistols.moviereviewapp.view
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -55,7 +58,6 @@ class MovieFeedFragment : Fragment() {
     }
 
     private fun observeMovies(){
-
         movieFeedViewModel.getMovies().observe(viewLifecycleOwner, { movies ->
             movies?.let {
                 recyclerView.visibility = View.VISIBLE
@@ -63,4 +65,5 @@ class MovieFeedFragment : Fragment() {
             }
         })
     }
+
 }
