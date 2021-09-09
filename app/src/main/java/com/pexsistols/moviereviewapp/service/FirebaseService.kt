@@ -45,7 +45,7 @@ class FirebaseService {
     }
 
     fun getDataFromFb(id : Int, movie : MutableLiveData<Movie>){
-        db.collection("reviews").whereEqualTo("id", id.toString()).orderBy("id", Query.Direction.ASCENDING).addSnapshotListener { value, error ->
+        db.collection("reviews").whereEqualTo("id", id).orderBy("id", Query.Direction.ASCENDING).addSnapshotListener { value, error ->
             if (error != null){
                 println(error.localizedMessage)
             }else{
