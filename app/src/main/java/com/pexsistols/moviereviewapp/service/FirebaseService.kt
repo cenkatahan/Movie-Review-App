@@ -2,6 +2,7 @@ package com.pexsistols.moviereviewapp.service
 
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.pexsistols.moviereviewapp.model.Movie
@@ -13,7 +14,7 @@ class FirebaseService {
     fun getAllDataFromFB(movies : MutableLiveData<ArrayList<Movie>>){
         val movieList = ArrayList<Movie>()
 
-        db.collection("reviews").addSnapshotListener { value, error ->
+        db.collection("reviews").orderBy("id", Query.Direction.ASCENDING).addSnapshotListener { value, error ->
             if (error != null){
                 println(error.localizedMessage)
             }else{
@@ -22,7 +23,7 @@ class FirebaseService {
                         val documents = value.documents
 
                         for (document in documents){
-                            val id = document.get("id") as String
+                            val id = document.get("id") as Number
                             val title = document.get("name") as String
                             val ogTitle = document.get("originalTitle") as String
                             val director = document.get("director") as String
@@ -44,7 +45,7 @@ class FirebaseService {
     }
 
     fun getDataFromFb(id : Int, movie : MutableLiveData<Movie>){
-        db.collection("reviews").whereEqualTo("id", id.toString()).addSnapshotListener { value, error ->
+        db.collection("reviews").whereEqualTo("id", id.toString()).orderBy("id", Query.Direction.ASCENDING).addSnapshotListener { value, error ->
             if (error != null){
                 println(error.localizedMessage)
             }else{
@@ -52,7 +53,7 @@ class FirebaseService {
                     val documentValues = value.documents
 
                     for (data in documentValues){
-                        val id = data.get("id") as String
+                        val id = data.get("id") as Number
                         val title = data.get("name") as String
                         val ogTitle = data.get("originalTitle") as String
                         val director = data.get("director") as String
