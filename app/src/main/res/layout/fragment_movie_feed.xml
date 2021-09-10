@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/feedLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_black"
-    tools:context=".view.MovieFeedFragment">
+    tools:context=".view.MovieFeedFragment"
+    android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/search_feed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/feed_search"
+            android:textColorHint="@color/app_white_transparent"
+            android:textColor="@color/app_white"
+            android:drawableLeft="@drawable/ic_baseline_search_24"
+            android:backgroundTint="@color/app_brown"
+            android:layout_marginBottom="8dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_feed"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
