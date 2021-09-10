@@ -18,6 +18,7 @@ import com.pexsistols.moviereviewapp.viewmodel.MovieFeedViewModel
 
 class MovieFeedFragment : Fragment() {
 
+    private lateinit var searchBar: EditText
     private lateinit var recyclerView: RecyclerView
     private lateinit var movieAdapter : RecyclerAdapter
     private lateinit var movieList : ArrayList<Movie>
@@ -43,10 +44,28 @@ class MovieFeedFragment : Fragment() {
         movieFeedViewModel = ViewModelProviders.of(this).get(MovieFeedViewModel::class.java)
         movieFeedViewModel.fetchMovies()
 
+        searchBar = view.findViewById(R.id.search_feed)
         recyclerView = view.findViewById(R.id.recyclerview_feed)
         initRecyclerview()
 
+//        searchBar.addTextChangedListener(object : TextWatcher{
+//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//                TODO("Not yet implemented")
+//            }
+//
+//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//                TODO("Not yet implemented")
+//            }
+//
+//            override fun afterTextChanged(p0: Editable?) {
+//                //filter(p0.toString())
+//            }
+//
+//        })
+
         observeMovies()
+
+        //movieAdapter.updateMovieList(movieList)
     }
 
 
@@ -62,8 +81,29 @@ class MovieFeedFragment : Fragment() {
             movies?.let {
                 recyclerView.visibility = View.VISIBLE
                 movieAdapter.updateMovieList(movies)
+
+                //movieList = movies
             }
         })
     }
 
+
+    private fun filter(text: String) {
+        var filteredList = ArrayList<Movie>()
+
+//        movieFeedViewModel.getMovies().observe(viewLifecycleOwner, {movies ->
+//            movies?.let {
+//                for (movie: Movie in movies){
+//                    if (movie.title?.lowercase()?.contains(text.lowercase()) == true || movie.originalTitle?.lowercase()?.contains(text) == null){
+//                        filteredList.add(movie)
+//                    }
+//                }
+//                //movieList = filteredList
+//                println(filteredList[0].title)
+//            }
+//
+//        })
+
+
+    }
 }

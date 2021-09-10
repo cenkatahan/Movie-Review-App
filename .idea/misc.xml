@@ -9,6 +9,7 @@
         <entry key="..\:/Users/Atahan/AndroidStudioProjects/MovieReviewApp/app/src/main/res/drawable/border_poster.xml" value="0.24177631578947367" />
         <entry key="..\:/Users/Atahan/AndroidStudioProjects/MovieReviewApp/app/src/main/res/drawable/border_poster_review.xml" value="0.24177631578947367" />
         <entry key="..\:/Users/Atahan/AndroidStudioProjects/MovieReviewApp/app/src/main/res/drawable/corner_poster.xml" value="0.24177631578947367" />
+        <entry key="..\:/Users/Atahan/AndroidStudioProjects/MovieReviewApp/app/src/main/res/font/font.xml" value="0.2506578947368421" />
         <entry key="..\:/Users/Atahan/AndroidStudioProjects/MovieReviewApp/app/src/main/res/layout/activity_home_page.xml" value="0.23157894736842105" />
         <entry key="..\:/Users/Atahan/AndroidStudioProjects/MovieReviewApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Atahan/AndroidStudioProjects/MovieReviewApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.22269736842105264" />
@@ -27,7 +28,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.33" />
+        <option name="scale" value="0.2" />
       </ProjectState>
     </option>
   </component>
