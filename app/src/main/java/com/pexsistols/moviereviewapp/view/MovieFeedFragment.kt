@@ -48,20 +48,22 @@ class MovieFeedFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerview_feed)
         initRecyclerview()
 
-//        searchBar.addTextChangedListener(object : TextWatcher{
-//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//                TODO("Not yet implemented")
-//            }
-//
-//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//                TODO("Not yet implemented")
-//            }
-//
-//            override fun afterTextChanged(p0: Editable?) {
-//                //filter(p0.toString())
-//            }
-//
-//        })
+        searchBar.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                if (p0.toString().isNotEmpty()){
+                    filter(p0.toString())
+                }else{
+                    observeMovies()
+                }
+            }
+
+        })
 
         observeMovies()
 
@@ -81,8 +83,6 @@ class MovieFeedFragment : Fragment() {
             movies?.let {
                 recyclerView.visibility = View.VISIBLE
                 movieAdapter.updateMovieList(movies)
-
-                //movieList = movies
             }
         })
     }
@@ -91,18 +91,17 @@ class MovieFeedFragment : Fragment() {
     private fun filter(text: String) {
         var filteredList = ArrayList<Movie>()
 
-//        movieFeedViewModel.getMovies().observe(viewLifecycleOwner, {movies ->
-//            movies?.let {
-//                for (movie: Movie in movies){
-//                    if (movie.title?.lowercase()?.contains(text.lowercase()) == true || movie.originalTitle?.lowercase()?.contains(text) == null){
-//                        filteredList.add(movie)
-//                    }
-//                }
-//                //movieList = filteredList
-//                println(filteredList[0].title)
-//            }
-//
-//        })
+        movieFeedViewModel.getMovies().observe(viewLifecycleOwner, {movies ->
+            movies?.let {
+                for (movie: Movie in movies){
+                    if (movie.title?.lowercase()!!.contains(text.lowercase()) || movie.originalTitle!!.lowercase()?.contains(text)){
+                        filteredList.add(movie)
+                    }
+                }
+                movieAdapter.updateMovieList(filteredList)
+            }
+
+        })
 
 
     }
