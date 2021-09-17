@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         Timer().schedule(timerTask {
             changeScreen()
-        }, 1500)
+        }, 3000)
     }
 
 
