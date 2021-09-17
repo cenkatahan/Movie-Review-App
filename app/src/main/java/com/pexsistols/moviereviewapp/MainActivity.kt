@@ -12,12 +12,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         Timer().schedule(timerTask {
-            changeScreen()
+            performScreenTransition()
         }, 3000)
     }
 
 
-    private fun changeScreen(){
+    private fun performScreenTransition(){
         val intent = Intent(this, HomePageActivity::class.java)
         startActivity(intent)
         finish()
