@@ -14,19 +14,16 @@ import com.pexsistols.moviereviewapp.viewmodel.MovieReviewViewModel
 
 class MovieReviewFragment : Fragment() {
 
-    private lateinit var title : TextView
-    private lateinit var ogTitle : TextView
-    private lateinit var director : TextView
-    private lateinit var year : TextView
-    private lateinit var length : TextView
-    private lateinit var poster : ImageView
-    private lateinit var genres : TextView
-    private lateinit var review : TextView
+    private lateinit var title: TextView
+    private lateinit var ogTitle: TextView
+    private lateinit var director: TextView
+    private lateinit var year: TextView
+    private lateinit var length: TextView
+    private lateinit var poster: ImageView
+    private lateinit var genres: TextView
+    private lateinit var review: TextView
     private lateinit var movieReviewViewModel: MovieReviewViewModel
-    private lateinit var glideService : GlideService
-    private var movieId : Int = 0
-
-
+    private var movieId: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,13 +41,15 @@ class MovieReviewFragment : Fragment() {
             movieId = MovieReviewFragmentArgs.fromBundle(it).id
         }
 
-        movieReviewViewModel = ViewModelProviders.of(this).get(MovieReviewViewModel::class.java)
-        movieReviewViewModel.fetchMovieFromFB(movieId)
+        movieReviewViewModel =
+            ViewModelProviders.of(this).get(MovieReviewViewModel::class.java).apply {
+                fetchMovieFromFB(movieId)
+            }
 
         observeMovie(view)
     }
 
-    private fun declareComponents(view: View){
+    private fun declareComponents(view: View) {
         title = view.findViewById(R.id.review_title)
         ogTitle = view.findViewById(R.id.review_original_title)
         director = view.findViewById(R.id.review_director)
@@ -59,11 +58,10 @@ class MovieReviewFragment : Fragment() {
         poster = view.findViewById(R.id.review_poster)
         genres = view.findViewById(R.id.review_genre)
         review = view.findViewById(R.id.review_review)
-        glideService = GlideService()
     }
 
-    private fun observeMovie(view: View){
-        movieReviewViewModel.getMovie().observe(viewLifecycleOwner, {
+    private fun observeMovie(view: View) {
+        movieReviewViewModel.getMovie().observe(viewLifecycleOwner) {
             title.text = it.title
             ogTitle.text = it.originalTitle
             director.text = it.director
@@ -72,8 +70,8 @@ class MovieReviewFragment : Fragment() {
             genres.text = it.genre
             review.text = it.review
 
-            glideService.downloadPoster(view, it.posterUrl, poster)
-        })
+            GlideService.downloadPoster(view, it.posterUrl, poster)
+        }
     }
 
 }

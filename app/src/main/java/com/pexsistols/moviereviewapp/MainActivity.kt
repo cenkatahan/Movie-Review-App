@@ -17,10 +17,11 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun performScreenTransition(){
-        val intent = Intent(this, HomePageActivity::class.java)
-        startActivity(intent)
-        finish()
+    private fun performScreenTransition() {
+        Intent(this, HomePageActivity::class.java).apply {
+            startActivity(this)
+            finish()
+        }
     }
 
 }

@@ -20,9 +20,9 @@ class MovieFeedFragment : Fragment() {
 
     private lateinit var searchBar: EditText
     private lateinit var recyclerView: RecyclerView
-    private lateinit var movieAdapter : RecyclerAdapter
-    private lateinit var movieList : ArrayList<Movie>
-    private lateinit var movieFeedViewModel : MovieFeedViewModel
+    private lateinit var movieAdapter: RecyclerAdapter
+    private lateinit var movieList: ArrayList<Movie>
+    private lateinit var movieFeedViewModel: MovieFeedViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,14 +41,15 @@ class MovieFeedFragment : Fragment() {
 
         movieList = ArrayList()
 
-        movieFeedViewModel = ViewModelProviders.of(this).get(MovieFeedViewModel::class.java)
-        movieFeedViewModel.fetchMovies()
+        movieFeedViewModel = ViewModelProviders.of(this).get(MovieFeedViewModel::class.java).apply {
+            fetchMovies()
+        }
 
         searchBar = view.findViewById(R.id.search_feed)
         recyclerView = view.findViewById(R.id.recyclerview_feed)
         initRecyclerview()
 
-        searchBar.addTextChangedListener(object : TextWatcher{
+        searchBar.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
 
@@ -56,53 +57,50 @@ class MovieFeedFragment : Fragment() {
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                if (p0.toString().isNotEmpty()){
-                    filter(p0.toString())
-                }else{
-                    observeMovies()
+                when (p0.toString().isNotEmpty()) {
+                    true -> filter(p0.toString())
+                    else -> observeMovies()
                 }
             }
 
         })
-
         observeMovies()
-
-        //movieAdapter.updateMovieList(movieList)
     }
 
 
-    private fun initRecyclerview(){
-        recyclerView.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+    private fun initRecyclerview() {
+        recyclerView.layoutManager =
+            LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         movieAdapter = RecyclerAdapter(movieList)
         recyclerView.adapter = movieAdapter
         recyclerView.setHasFixedSize(true)
     }
 
-    private fun observeMovies(){
-        movieFeedViewModel.getMovies().observe(viewLifecycleOwner, { movies ->
+    private fun observeMovies() {
+        movieFeedViewModel.getMovies().observe(viewLifecycleOwner) { movies ->
             movies?.let {
                 recyclerView.visibility = View.VISIBLE
                 movieAdapter.updateMovieList(movies)
             }
-        })
+        }
     }
 
 
     private fun filter(text: String) {
-        var filteredList = ArrayList<Movie>()
+        val filteredList = ArrayList<Movie>()
 
-        movieFeedViewModel.getMovies().observe(viewLifecycleOwner, {movies ->
+        movieFeedViewModel.getMovies().observe(viewLifecycleOwner) { movies ->
             movies?.let {
-                for (movie: Movie in movies){
-                    if (movie.title?.lowercase()!!.contains(text.lowercase()) || movie.originalTitle!!.lowercase()?.contains(text)){
+                for (movie: Movie in movies) {
+                    if (movie.title?.lowercase()!!
+                            .contains(text.lowercase()) || movie.originalTitle!!.lowercase()
+                            .contains(text)
+                    ) {
                         filteredList.add(movie)
                     }
                 }
                 movieAdapter.updateMovieList(filteredList)
             }
-
-        })
-
-
+        }
     }
 }

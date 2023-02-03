@@ -11,11 +11,11 @@ class MovieFeedViewModel : ViewModel() {
     private val movies = MutableLiveData<ArrayList<Movie>>()
     private val firebaseService = FirebaseService()
 
-    fun fetchMovies(){
+    fun fetchMovies() {
         firebaseService.getAllDataFromFB(movies)
     }
 
-    fun getMovies() : MutableLiveData<ArrayList<Movie>> {
+    fun getMovies(): MutableLiveData<ArrayList<Movie>> {
         return movies
     }
 
