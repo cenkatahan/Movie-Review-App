@@ -1,7 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-}
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'}
 
 apply plugin: "androidx.navigation.safeargs"
 apply plugin: 'com.google.gms.google-services'
@@ -67,5 +68,13 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.3.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-firestore-ktx'
-    
+
+    //HILT
+    implementation "com.google.dagger:hilt-android:2.44"
+    kapt "com.google.dagger:hilt-compiler:2.44"
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
 }
